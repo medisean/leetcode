@@ -2,27 +2,22 @@ import UIKit
 
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
-        let nsstring = s as NSString
-        
         var longestSubStringCount = 0
-        var maxString: NSString = ""
-        for i in 0..<nsstring.length {
-            let new = nsstring.substring(with: NSRange(location: i, length: 1))
-            let range = maxString.range(of: new)
-            
-            if range.length != 0 {
-                longestSubStringCount = max(maxString.length, longestSubStringCount)
-                maxString = (maxString.substring(from: range.location + 1) + new) as NSString
-                continue
+        var chracters: [Character] = []
+
+        for c in s {
+            if let index = chracters.firstIndex(of: c) {
+                let range: Range<Int> = 0..<(index+1)
+                chracters.removeSubrange(range)
             }
-            maxString = maxString.appending(new) as NSString
-            longestSubStringCount = max(maxString.length, longestSubStringCount)
+            chracters.append(c)
+            longestSubStringCount = max(chracters.count, longestSubStringCount)
         }
         return longestSubStringCount
     }
 }
 
-let str = "abcabcbb"
+let str = "aabaab!bb"
 let solution = Solution()
 print(solution.lengthOfLongestSubstring(str))
 
