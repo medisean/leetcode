@@ -3,15 +3,21 @@ import UIKit
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
         var longestSubStringCount = 0
-        var chracters: [Character] = []
+        var character: [Character] = []
+        var map: [Character: Int] = [:]
 
         for c in s {
-            if let index = chracters.firstIndex(of: c) {
-                let range: Range<Int> = 0..<(index+1)
-                chracters.removeSubrange(range)
+            if map[c] != nil {
+                
+            } else {
+                map
             }
-            chracters.append(c)
-            longestSubStringCount = max(chracters.count, longestSubStringCount)
+            if let index = character.firstIndex(of: c) {
+                let range = 0..<(index+1)
+                character.removeSubrange(range)
+            }
+            character.append(c)
+            longestSubStringCount = max(character.count, longestSubStringCount)
         }
         return longestSubStringCount
     }
