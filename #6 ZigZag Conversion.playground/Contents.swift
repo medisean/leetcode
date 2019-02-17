@@ -100,15 +100,11 @@ class Solution {
                 }
             }
         }
-        var result = ""
-        for string in strings {
-            result += string
-            strings.append("")
-        }
+        let result = strings.joined()
         return result
     }
 }
 
-let s = "AB"
+let s = "ABCDEFG"
 let solution = Solution()
-print(solution.convert(s, 1))
+print(solution.convert(s, 3))
