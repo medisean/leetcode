@@ -27,12 +27,16 @@ class Solution:
         if len(height) <= 1:
             return 0
 
-        areas = []
-        for i in range(len(height)): # O(n*n)
-            for j in range(i-1):
-                area = min(height[i], height[j]) * (i - j)
-                areas.append(area)
-        return  max(areas)
+        maxArea = 0
+        i = 0
+        j = len(height) - 1
+        while i < j:
+            maxArea = max(maxArea, min(height[i], height[j]) * (j - i))
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+        return  maxArea
 
 if __name__ == '__main__':
     solution = Solution() 
