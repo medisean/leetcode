@@ -56,15 +56,22 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 100 -> C
 500 -> D
 1000 -> M
+
+因式分解
 '''
 
 class Solution:
     def intToRoman(self, num: int) -> str:
-        m := num / 1000
-        return 'xxx'
-
+        bases = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"]
+        numbers = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+        
+        s = ''
+        for i in range(len(bases)):
+            while num >= numbers[i]:
+                num -= numbers[i]
+                s += bases[i]
+        return s
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.intToRoman(58))
-        
+    print(solution.intToRoman(2222))
