@@ -14,20 +14,24 @@ Note:
 Although the above answer is in lexicographical order, your answer could be in any order you want.
 '''
 class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
-        numberDict = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-        words = []
+    def letterCombinations(self, digits: str) -> [str]:
         result = []
-        count = 1
+        numberDict = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
         for digit in digits:
-            word = numberDict[digit]
-            count *= len(word)
-            words.append(word)
-        for i in range(count):
-            result.append(111)
-            
+            chars = numberDict[digit]
+            result = self.twoLetterCombinations(chars, result)
         return result
 
+    def twoLetterCombinations(self, digit: str, strs: [str]) -> [str]:
+        result = []
+        if len(strs) == 0:
+            for c in digit:
+                result.append(c)
+        else:
+            for c in digit:
+                for s in strs:
+                    result.append(s + c)
+        return result
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.letterCombinations('234'))
+    print(solution.letterCombinations('23'))
