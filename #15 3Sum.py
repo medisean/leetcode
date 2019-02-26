@@ -22,22 +22,21 @@ class Solution:
         numDict = {int: int}
         for i in range(len(nums)):
             numDict[nums[i]] = i
-        
         twoAddArray = []
         for i in range(len(nums)):
             for j in range(i+1, len(nums)):
                 first = nums[i]
                 second = nums[j]
                 twoAddArray.append([i, j, first+second])
-        print(twoAddArray)
-        print("****")
         for array in twoAddArray:
-            if -array[2] in numDict and numDict[-array[2]] < array[0] and numDict[-array[2]] < array[1]:
-                # result.append([array[0], array[1], numDict[-array[2]]])
-                # print([array[0], array[1], numDict[-array[2]]])
-                result.append([nums[array[0]], nums[array[1]], nums[numDict[-array[2]]]])
+            if -array[2] in numDict and numDict[-array[2]] != array[0] and numDict[-array[2]] != array[1]:
+                sortedArray = [nums[array[0]], nums[array[1]], nums[numDict[-array[2]]]]
+                sortedArray.sort()
+                if sortedArray not in result:
+                    result.append(sortedArray)
         return result
 
 if __name__ == '__main__':
     solution = Solution()
     print(solution.threeSum([-1, 0, 1, 2, -1, -4]))
+    print(solution.threeSum([]))
