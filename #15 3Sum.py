@@ -29,7 +29,7 @@ class Solution:
                 second = nums[j]
                 twoAddArray.append([i, j, first+second])
         for array in twoAddArray:
-            if -array[2] in numDict and numDict[-array[2]] != array[0] and numDict[-array[2]] != array[1]:
+            if -array[2] in numDict and numDict[-array[2]] > array[0] and numDict[-array[2]] > array[1]:
                 sortedArray = [nums[array[0]], nums[array[1]], nums[numDict[-array[2]]]]
                 sortedArray.sort()
                 if sortedArray not in result:
