@@ -23,6 +23,12 @@ class Solution:
         return result
         # This method is O(n, 3), not good enough
         '''
+        twoSum = []
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                twoSum.append([i, j, nums[i] + nums[j]])
+        twoSum.sort(key=lambda sum: sum[2])
+        print(twoSum)
         return 0
 
 if __name__ == '__main__':
