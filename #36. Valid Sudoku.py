@@ -8,28 +8,17 @@ Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repe
 
 class Solution:
     def isValidSudoku(self, board: [[str]]) -> bool:
-        d = {"1": False, "2": False, "3": False, "4": False, "5": False, "6": False, "7": False, "8": False, "9": False}
         for row in board: # check row
-            for column in row:
-                if column != ".":
-                    if d[column] == True:
-                        return False
-                    else:
-                        d[column] = True
-            for key in d: # reset status
-                d[key] = False 
+            if not self.isArrayValid(row):
+                return False
 
         for i in range(len(board)): # check column
+            results = []
             for j in range(len(board)):
-                if board[j][i] != ".":
-                    if d[board[j][i]] == True:
-                        return False
-                    else:
-                        d[board[j][i]] = True
-            for key in d:
-                d[key] = False # reset status
+                results.append(board[j][i])
+            if not self.isArrayValid(results):
+                return False
         
-        print("ready")
         for i in range(3): # check 3*3 matrix
             rows = board[i*3:(i+1)*3]
             for j in range(3):
