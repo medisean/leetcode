@@ -1,10 +1,15 @@
 
 class Solution:
     def firstMissingPositive(self, nums: [int]) -> int:
+        if len(nums) == 0:
+            return 1
+        sum = 2
         d = {int: bool}
         for num in nums:
-            d[num] = True
-        for i in range(1, len(nums)+1):
+            if num > 0:
+                sum += 1
+                d[num] = True
+        for i in range(1, sum):
             if i not in d:
                 return i
 if __name__ == "__main__":
