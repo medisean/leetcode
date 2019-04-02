@@ -53,7 +53,6 @@ class Solution:
         for i in range(k):
             for j in range(k):
                 matrix[i][j] = results[i][j]
-        print(matrix)
 
 if __name__ == '__main__':
     solution = Solution()
