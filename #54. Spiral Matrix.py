@@ -27,39 +27,41 @@ class Solution:
             return []
 
         direction = 0 # 0: right, 1: down, 2: left, 3: up
-        flag = []
         m = len(matrix)
         n = len(matrix[0])
         result = []
         j, k = 0, 0
+        r, b, l, u = n, m, 0, 0
         for _ in range(m*n):
-            flag.append([j, k])
             result.append(matrix[j][k])
             if direction == 0:
-                if k + 1 < n and [j, k+1] not in flag:
+                if k + 1 < r:
                     k += 1
                 else:
+                    u += 1
                     j += 1
                     direction = 1
             elif direction == 1:
-                if j + 1 < m and [j+1, k] not in flag:
+                if j + 1 < b:
                     j += 1
                 else:
+                    r -= 1
                     k -= 1
                     direction = 2
             elif direction == 2:
-                if k - 1 >= 0 and [j, k-1] not in flag:
+                if k - 1 >= l:
                     k -= 1
                 else:
                     j -= 1
+                    b -= 1
                     direction = 3
             elif direction == 3:
-                if j - 1 >= 0 and [j-1, k] not in flag:
+                if j - 1 >= u:
                     j -= 1
                 else:
+                    l += 1
                     k += 1
                     direction = 0
-        print(result)
         return result
 
 if __name__ == '__main__':
