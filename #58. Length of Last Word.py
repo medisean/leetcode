@@ -14,7 +14,6 @@ Output: 5
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         strs = s.strip().split(" ")
-        
         return len(strs[-1])
 
 if __name__ == '__main__':
